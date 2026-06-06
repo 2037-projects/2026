@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue:       #1B4F72;
+      --blue:       #0085CA;
       --blue-mid:   #2E86C1;
       --blue-light: #D6EAF8;
       --sand:       #F5F0E8;
@@ -415,6 +415,17 @@
       color: var(--ink-mid);
       margin-top: 3px;
     }
+    .caregiver-hero .contact {
+      margin-top: 4px;
+      font-size: 0.85rem;
+      color: var(--ink-mid);
+    }
+    .caregiver-hero .contact a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .caregiver-hero .contact a:hover { text-decoration: underline; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
@@ -425,6 +436,68 @@
       .tag { font-size: 0.58rem; }
       .page-wrap { padding: 1.25rem 0.75rem 3rem; }
       .rhythm-card { padding: 1rem; }
+    }
+
+    /* ── DAY MODAL (day view) ── */
+    .day { cursor: pointer; }
+    .day.inactive { cursor: default; }
+    .day-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,26,26,0.55);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+    }
+    .day-modal.open { display: flex; }
+    .day-modal-card {
+      background: var(--white);
+      border-radius: 14px;
+      max-width: 440px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 1.75rem 1.5rem 1.5rem;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: fadeUp 0.22s ease both;
+    }
+    .day-modal-close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.8rem;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      line-height: 1;
+      color: var(--ink-light);
+      cursor: pointer;
+      font-family: var(--sans);
+    }
+    .day-modal-body .day-num {
+      font-size: 2.6rem;
+      margin-bottom: 0.15rem;
+    }
+    .day-modal-body .day-name {
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.1rem;
+    }
+    .day-modal-body .slot {
+      font-size: 1rem;
+      padding: 9px 13px;
+      margin-bottom: 6px;
+      border-radius: 6px;
+    }
+    .day-modal-body .tag {
+      font-size: 0.85rem;
+      padding: 7px 13px;
+      margin-top: 5px;
+      border-radius: 6px;
     }
 
     /* ── ANIMATIONS ── */
@@ -476,16 +549,16 @@
       <div class="rhythm-card">
         <h3>The Children</h3>
         <div class="rhythm-row"><span class="rhythm-time">Sylvie</span><span>Up at 10am · Bedtime 10pm · No nap</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">Madeline</span><span>Up at 8am · Nap 3:30–5pm · Bedtime 9:30pm</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">Mini disco</span><span>Nearby resort, ~8–8:30pm most nights</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">Madeline</span><span>Up at 8am · Nap 3:30pm–5pm · Bedtime 9:30pm</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">Mini disco</span><span>Nearby resort, ~8pm–8:30pm most nights</span></div>
         <div class="rhythm-row"><span class="rhythm-time">Resort show</span><span>Most nights at 9pm</span></div>
       </div>
       <div class="rhythm-card">
         <h3>Daily Shape</h3>
         <div class="rhythm-row"><span class="rhythm-time">7am–1pm</span><span class="rhythm-who olga">Olga</span><span style="margin-left:6px;font-size:0.78rem;color:var(--ink-mid)">(Mon/Thu/Fri/Sat) or Parents (Tue/Wed)</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">1–3pm</span><span class="rhythm-who parents">Parents</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">3–9pm</span><span class="rhythm-who yulia">Yulia</span><span style="margin-left:6px;font-size:0.78rem;color:var(--ink-mid)">(weekdays only)</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">9–11pm</span><span class="rhythm-who angi">Angi</span><span style="margin-left:6px;font-size:0.78rem;color:var(--ink-mid)">bedtime</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">1pm–3pm</span><span class="rhythm-who parents">Parents</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">3pm–9pm</span><span class="rhythm-who yulia">Yulia</span><span style="margin-left:6px;font-size:0.78rem;color:var(--ink-mid)">(weekdays only)</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">9pm–11pm</span><span class="rhythm-who angi">Angi</span><span style="margin-left:6px;font-size:0.78rem;color:var(--ink-mid)">bedtime</span></div>
         <div class="rhythm-row"><span class="rhythm-time">Fri + Sat nights</span><span class="rhythm-who angi">Angi</span><span style="margin-left:6px;font-size:0.78rem;color:var(--ink-mid)">overnight 9pm–7am</span></div>
       </div>
     </div>
@@ -504,8 +577,8 @@
       <h3>Caregiver snapshot</h3>
       <div class="rule-item"><span class="rule-icon" style="color:var(--angi)">◆</span><span><strong>Angi (au pair)</strong> — Lives with the family. ~28 hrs/week base. Bedtimes nightly + Fri/Sat overnights. Off Sun 7am–Sun 7pm.</span></div>
       <div class="rule-item"><span class="rule-icon" style="color:var(--olga)">◆</span><span><strong>Olga (babysitter)</strong> — ~34 hrs/week. Mornings Mon/Thu/Fri/Sat 7am–1pm + Sundays 8am–6pm. No overnights.</span></div>
-      <div class="rule-item"><span class="rule-icon" style="color:var(--yulia)">◆</span><span><strong>Yulia (friend/neighbor)</strong> — Weekdays only 3–9pm. Brings daughter Sana (a few years older than Sylvie).</span></div>
-      <div class="rule-item"><span class="rule-icon" style="color:var(--parents)">◆</span><span><strong>Parents</strong> — Working 3pm–midnight daily. Cover Tue/Wed mornings + 1–3pm gaps + bedtime on Angi's off days.</span></div>
+      <div class="rule-item"><span class="rule-icon" style="color:var(--yulia)">◆</span><span><strong>Yulia (friend/neighbor)</strong> — Weekdays only 3pm–9pm. Brings daughter Sana (a few years older than Sylvie).</span></div>
+      <div class="rule-item"><span class="rule-icon" style="color:var(--parents)">◆</span><span><strong>Parents</strong> — Working 3pm–midnight daily. Cover Tue/Wed mornings + 1pm–3pm gaps + bedtime on Angi's off days.</span></div>
     </div>
   </div>
 </section>
@@ -516,7 +589,7 @@
 <section id="calendar" class="section">
   <div class="page-wrap">
     <p class="section-title">July Calendar</p>
-    <p class="section-intro">Full month at a glance. Tap any tab above for your personal schedule.</p>
+    <p class="section-intro">Full month at a glance. Tap any day for a closer look, or tap a tab above for your personal schedule.</p>
 
     <div class="legend">
       <div class="leg"><div class="leg-dot" style="background:var(--angi-bg);border:1px solid var(--angi)"></div>Angi</div>
@@ -544,45 +617,45 @@
       <div class="day exception">
         <div class="day-num">7</div><div class="day-name">Mon · first day</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–3pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot parents">Parents 9–11pm</span>
+        <span class="slot parents">Parents 1pm–3pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot parents">Parents 9pm–11pm</span>
         <span class="tag note">Angi settling in</span>
       </div>
       <div class="day">
         <div class="day-num">8</div><div class="day-name">Tue · no Olga</div>
         <span class="slot parents">Parents 11pm–1pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag goout">Go out → until 7am</span>
       </div>
       <div class="day">
         <div class="day-num">9</div><div class="day-name">Wed · no Olga</div>
         <span class="slot parents">Parents 11pm–1pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag goout">Go out → until 7am</span>
       </div>
       <div class="day">
         <div class="day-num">10</div><div class="day-name">Thu</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–3pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot parents">Parents 1pm–3pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag goout">Go out → until 7am</span>
       </div>
       <div class="day">
         <div class="day-num">11</div><div class="day-name">Fri</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–3pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
+        <span class="slot parents">Parents 1pm–3pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–7am ★</span>
         <span class="tag goout">Go out → until 7am ✓</span>
       </div>
       <div class="day exception">
         <div class="day-num">12</div><div class="day-name">Sat · boat day</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–9pm</span>
+        <span class="slot parents">Parents 1pm–9pm</span>
         <span class="slot angi">Angi 9pm–7am ★</span>
         <span class="tag note">Family + Angi on boat</span>
         <span class="tag goout">Go out → until 7am ✓</span>
@@ -595,55 +668,55 @@
     <div class="cal-grid">
       <div class="day rest-day">
         <div class="day-num">13</div><div class="day-name">Sun · Angi rest</div>
-        <span class="slot parents">Parents 7–8am</span>
+        <span class="slot parents">Parents 7am–8am</span>
         <span class="slot olga">Olga 8am–6pm</span>
-        <span class="slot parents">Parents 6–7pm</span>
+        <span class="slot parents">Parents 6pm–7pm</span>
         <span class="slot angi">Angi resumes 7pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag rest">Rest: Sat 7am→Sun 7pm ✓</span>
       </div>
       <div class="day exception">
         <div class="day-num">14</div><div class="day-name">Mon · parent commitment</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–3pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot parents">Parents 9–11pm</span>
+        <span class="slot parents">Parents 1pm–3pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot parents">Parents 9pm–11pm</span>
         <span class="tag note">Parents out 9am–1pm → Olga covers ✓</span>
       </div>
       <div class="day">
         <div class="day-num">15</div><div class="day-name">Tue · no Olga</div>
         <span class="slot parents">Parents 11pm–1pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag goout">Go out → until 7am</span>
       </div>
       <div class="day">
         <div class="day-num">16</div><div class="day-name">Wed · no Olga</div>
         <span class="slot parents">Parents 11pm–1pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag goout">Go out → until 7am</span>
       </div>
       <div class="day">
         <div class="day-num">17</div><div class="day-name">Thu</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–3pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot parents">Parents 1pm–3pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag goout">Go out → until 7am</span>
       </div>
       <div class="day">
         <div class="day-num">18</div><div class="day-name">Fri</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–3pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
+        <span class="slot parents">Parents 1pm–3pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–7am ★</span>
         <span class="tag goout">Go out → until 7am ✓</span>
       </div>
       <div class="day">
         <div class="day-num">19</div><div class="day-name">Sat</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–9pm</span>
+        <span class="slot parents">Parents 1pm–9pm</span>
         <span class="slot angi">Angi 9pm–7am ★</span>
         <span class="tag goout">Go out → until 7am ✓</span>
       </div>
@@ -655,55 +728,55 @@
     <div class="cal-grid">
       <div class="day rest-day">
         <div class="day-num">20</div><div class="day-name">Sun · Angi rest</div>
-        <span class="slot parents">Parents 7–8am</span>
+        <span class="slot parents">Parents 7am–8am</span>
         <span class="slot olga">Olga 8am–6pm</span>
-        <span class="slot parents">Parents 6–7pm</span>
+        <span class="slot parents">Parents 6pm–7pm</span>
         <span class="slot angi">Angi resumes 7pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag rest">Rest: Sat 7am→Sun 7pm ✓</span>
       </div>
       <div class="day">
         <div class="day-num">21</div><div class="day-name">Mon · Angi off</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–3pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot parents">Parents 9–11pm</span>
+        <span class="slot parents">Parents 1pm–3pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot parents">Parents 9pm–11pm</span>
         <span class="tag note">Angi fully off all day</span>
       </div>
       <div class="day">
         <div class="day-num">22</div><div class="day-name">Tue · no Olga</div>
         <span class="slot parents">Parents 11pm–1pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag goout">Go out → until 7am</span>
       </div>
       <div class="day">
         <div class="day-num">23</div><div class="day-name">Wed · no Olga</div>
         <span class="slot parents">Parents 11pm–1pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag goout">Go out → until 7am</span>
       </div>
       <div class="day">
         <div class="day-num">24</div><div class="day-name">Thu</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–3pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot parents">Parents 1pm–3pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag goout">Go out → until 7am</span>
       </div>
       <div class="day">
         <div class="day-num">25</div><div class="day-name">Fri</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–3pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
+        <span class="slot parents">Parents 1pm–3pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–7am ★</span>
         <span class="tag goout">Go out → until 7am ✓</span>
       </div>
       <div class="day">
         <div class="day-num">26</div><div class="day-name">Sat</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–9pm</span>
+        <span class="slot parents">Parents 1pm–9pm</span>
         <span class="slot angi">Angi 9pm–7am ★</span>
         <span class="tag goout">Go out → until 7am ✓</span>
       </div>
@@ -715,33 +788,33 @@
     <div class="cal-grid">
       <div class="day rest-day">
         <div class="day-num">27</div><div class="day-name">Sun · Angi rest</div>
-        <span class="slot parents">Parents 7–8am</span>
+        <span class="slot parents">Parents 7am–8am</span>
         <span class="slot olga">Olga 8am–6pm</span>
-        <span class="slot parents">Parents 6–7pm</span>
+        <span class="slot parents">Parents 6pm–7pm</span>
         <span class="slot angi">Angi resumes 7pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag rest">Rest: Sat 7am→Sun 7pm ✓</span>
       </div>
       <div class="day">
         <div class="day-num">28</div><div class="day-name">Mon · Angi off</div>
         <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1–3pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot parents">Parents 9–11pm</span>
+        <span class="slot parents">Parents 1pm–3pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot parents">Parents 9pm–11pm</span>
         <span class="tag note">Angi fully off all day</span>
       </div>
       <div class="day">
         <div class="day-num">29</div><div class="day-name">Tue · no Olga</div>
         <span class="slot parents">Parents 11pm–1pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag goout">Go out → until 7am</span>
       </div>
       <div class="day exception">
         <div class="day-num">30</div><div class="day-name">Wed · last day</div>
         <span class="slot parents">Parents 11pm–1pm</span>
-        <span class="slot yulia">Yulia 3–9pm</span>
-        <span class="slot angi">Angi 9–11pm</span>
+        <span class="slot yulia">Yulia 3pm–9pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag note">Last day of schedule</span>
       </div>
       <div class="day inactive"></div>
@@ -763,6 +836,7 @@
       <div>
         <h2>Angi</h2>
         <p>Au pair · lives with the family</p>
+        <p class="contact">📞 <a href="tel:+573187781173">+57 318 7781173</a></p>
       </div>
     </div>
 
@@ -775,7 +849,7 @@
 
     <div class="rules-box">
       <h3>Your weekly rhythm</h3>
-      <div class="rule-item"><span class="rule-icon">🌙</span><span><strong>Every night (Tue–Sun):</strong> On duty 9–11pm for bedtimes. Madeline sleeps ~9:30pm, Sylvie ~10pm.</span></div>
+      <div class="rule-item"><span class="rule-icon">🌙</span><span><strong>Every night (Tue–Sun):</strong> On duty 9pm–11pm for bedtimes. Madeline sleeps ~9:30pm, Sylvie ~10pm.</span></div>
       <div class="rule-item"><span class="rule-icon">★</span><span><strong>Friday night:</strong> Full overnight 9pm–7am. Parents going out — you're responsible until they're home.</span></div>
       <div class="rule-item"><span class="rule-icon">★</span><span><strong>Saturday night:</strong> Full overnight 9pm–7am. Same as Friday.</span></div>
       <div class="rule-item"><span class="rule-icon">😴</span><span><strong>Your rest:</strong> Saturday 7am → Sunday 7pm (36 consecutive hours off). Olga covers Sunday daytime.</span></div>
@@ -787,15 +861,15 @@
     <div class="rules-box">
       <h3>Hour limits explained</h3>
       <div class="rule-item"><span class="rule-icon">⏱</span><span><strong>10-hour daily shift max:</strong> No single continuous work block can exceed 10 hours. Your overnight shifts (9pm–7am) are exactly 10 hours.</span></div>
-      <div class="rule-item"><span class="rule-icon">📊</span><span><strong>45-hour weekly max:</strong> Your base schedule is ~28 hrs/week, leaving room for up to 2 weeknight overnights before reaching the cap.</span></div>
-      <div class="rule-item"><span class="rule-icon">🔄</span><span><strong>Shift reset:</strong> A 6+ hour break fully resets your daily shift clock. That's why Yulia covering 3–9pm lets you start fresh at 9pm.</span></div>
+      <div class="rule-item"><span class="rule-icon">📊</span><span><strong>45-hour weekly max:</strong> Your base schedule is ~28 hrs/week, leaving room for up to 2-4 weeknight overnights (2 full or 4 half nights) before reaching the cap.</span></div>
+      <div class="rule-item"><span class="rule-icon">🔄</span><span><strong>Shift reset:</strong> A 6+ hour break fully resets your daily shift clock. That's why Yulia covering 3pm–9pm lets you start fresh at 9pm.</span></div>
     </div>
 
     <div class="rhythm-grid">
       <div class="rhythm-card">
         <h3>Standard weekday (Tue/Wed/Thu)</h3>
         <div class="rhythm-row"><span class="rhythm-time">7am–9pm</span><span>Off duty — Olga (or parents) + Yulia cover</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">9–11pm</span><span class="rhythm-who angi">Angi on duty</span><span style="margin-left:6px;font-size:0.78rem">Bedtimes</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">9pm–11pm</span><span class="rhythm-who angi">Angi on duty</span><span style="margin-left:6px;font-size:0.78rem">Bedtimes</span></div>
         <div class="rhythm-row"><span class="rhythm-time">After 11pm</span><span>Off for the night</span></div>
       </div>
       <div class="rhythm-card">
@@ -811,8 +885,8 @@
       <div class="rhythm-card">
         <h3>Sunday (rest day)</h3>
         <div class="rhythm-row"><span class="rhythm-time">7am–7pm</span><span>Off — your 36-hr rest window. Olga covers 8am–6pm.</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">7–9pm</span><span class="rhythm-who angi">Angi resumes</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">9–11pm</span><span class="rhythm-who angi">Angi on duty</span><span style="margin-left:6px;font-size:0.78rem">Bedtimes</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">7pm–9pm</span><span class="rhythm-who angi">Angi resumes</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">9pm–11pm</span><span class="rhythm-who angi">Angi on duty</span><span style="margin-left:6px;font-size:0.78rem">Bedtimes</span></div>
       </div>
     </div>
   </div>
@@ -828,6 +902,7 @@
       <div>
         <h2>Olga</h2>
         <p>Babysitter · commutes to the house</p>
+        <p class="contact">📞 <a href="tel:+380666259332">+380 66 625 9332</a></p>
       </div>
     </div>
 
@@ -857,9 +932,9 @@
       </div>
       <div class="rhythm-card">
         <h3>Sunday</h3>
-        <div class="rhythm-row"><span class="rhythm-time">7–8am</span><span>Parents cover (Angi's overnight just ended)</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">7am–8am</span><span>Parents cover (Angi's overnight just ended)</span></div>
         <div class="rhythm-row"><span class="rhythm-time">8:00am</span><span class="rhythm-who olga">Olga arrives</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">3:30–5pm</span><span>Madeline's nap</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">3:30pm–5pm</span><span>Madeline's nap</span></div>
         <div class="rhythm-row"><span class="rhythm-time">~8pm</span><span>Mini disco at nearby resort (optional with kids)</span></div>
         <div class="rhythm-row"><span class="rhythm-time">6:00pm</span><span class="rhythm-who olga">Olga off</span><span style="margin-left:6px;font-size:0.78rem">Parents take over</span></div>
       </div>
@@ -867,9 +942,9 @@
 
     <div class="rules-box">
       <h3>About the kids</h3>
-      <div class="rule-item"><span class="rule-icon">👧</span><span><strong>Madeline</strong> — Up at 8am. Naps 3:30–5pm every day. Needs close supervision and attention. Bedtime ~9:30pm (after your shift).</span></div>
+      <div class="rule-item"><span class="rule-icon">👧</span><span><strong>Madeline</strong> — Up at 8am. Naps 3:30pm–5pm every day. Needs close supervision and attention. Bedtime ~9:30pm (after your shift).</span></div>
       <div class="rule-item"><span class="rule-icon">👧</span><span><strong>Sylvie</strong> — Up at 10am. No nap. More independent. Bedtime ~10pm (after your shift).</span></div>
-      <div class="rule-item"><span class="rule-icon">🎵</span><span><strong>Mini disco:</strong> The nearby resort has a mini disco most evenings around 8–8:30pm. On Sundays this falls in your shift — feel free to take them if they want to go.</span></div>
+      <div class="rule-item"><span class="rule-icon">🎵</span><span><strong>Mini disco:</strong> The nearby resort has a mini disco most evenings around 8pm–8:30pm. On Sundays this falls in your shift — feel free to take them if they want to go.</span></div>
     </div>
   </div>
 </section>
@@ -884,20 +959,21 @@
       <div>
         <h2>Yulia</h2>
         <p>Friend &amp; neighbor · brings daughter Sana</p>
+        <p class="contact">📞 <a href="tel:+34605396599">+34 605 39 65 99</a></p>
       </div>
     </div>
 
     <div class="stats-row">
-      <div class="stat-pill"><div class="stat-val">3–9pm</div><div class="stat-label">Daily window</div></div>
+      <div class="stat-pill"><div class="stat-val">3pm–9pm</div><div class="stat-label">Daily window</div></div>
       <div class="stat-pill"><div class="stat-val">~24</div><div class="stat-label">Hrs/week</div></div>
       <div class="stat-pill"><div class="stat-val">Weekdays</div><div class="stat-label">Only</div></div>
     </div>
 
     <div class="rules-box">
       <h3>Your schedule</h3>
-      <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Monday–Friday, 3–9pm</strong> (6 hrs/day). That's it — simple and consistent every weekday.</span></div>
+      <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Monday–Friday, 3pm–9pm</strong> (6 hrs/day). That's it — simple and consistent every weekday.</span></div>
       <div class="rule-item"><span class="rule-icon">🚫</span><span><strong>No weekends.</strong> Saturday and Sunday are not part of your schedule.</span></div>
-      <div class="rule-item"><span class="rule-icon">😴</span><span><strong>Madeline naps 3:30–5pm</strong> every day, right at the start of your shift. Sylvie is up and active during this window.</span></div>
+      <div class="rule-item"><span class="rule-icon">😴</span><span><strong>Madeline naps 3:30pm–5pm</strong> every day, right at the start of your shift. Sylvie is up and active during this window.</span></div>
       <div class="rule-item"><span class="rule-icon">🎵</span><span><strong>Mini disco ~8pm</strong> at the nearby resort most evenings — falls right at the end of your shift. Take the kids if they want to go!</span></div>
       <div class="rule-item"><span class="rule-icon">👧</span><span><strong>Sana is very welcome</strong> to join — Sylvie loves having a slightly older playmate.</span></div>
     </div>
@@ -905,8 +981,8 @@
     <div class="rhythm-grid">
       <div class="rhythm-card">
         <h3>Every weekday</h3>
-        <div class="rhythm-row"><span class="rhythm-time">3:00pm</span><span class="rhythm-who yulia">Yulia arrives</span><span style="margin-left:6px;font-size:0.78rem">Handoff from parents/Olga</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">3:30–5pm</span><span>Madeline nap · Sylvie active</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">3:00pm</span><span class="rhythm-who yulia">Yulia arrives</span><span style="margin-left:6px;font-size:0.78rem">Handoff from parents</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">3:30pm–5pm</span><span>Madeline nap · Sylvie active</span></div>
         <div class="rhythm-row"><span class="rhythm-time">5:00pm</span><span>Madeline up from nap</span></div>
         <div class="rhythm-row"><span class="rhythm-time">~6pm</span><span>Dinner with the kids</span></div>
         <div class="rhythm-row"><span class="rhythm-time">~8pm</span><span>Mini disco option</span></div>
@@ -916,7 +992,6 @@
         <h3>About the kids</h3>
         <div class="rhythm-row"><span class="rhythm-time">Madeline</span><span>Younger · needs nap · loves attention · bedtime 9:30pm</span></div>
         <div class="rhythm-row"><span class="rhythm-time">Sylvie</span><span>More independent · no nap · bedtime 10pm</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">Sana</span><span>Great with both kids · a few years older than Sylvie</span></div>
       </div>
     </div>
   </div>
@@ -931,17 +1006,18 @@
       <div class="caregiver-avatar" style="background:var(--parents-bg);color:var(--parents)">P</div>
       <div>
         <h2>Aliza &amp; Noah</h2>
-        <p>Working 3pm–midnight · going out Fri + Sat nights</p>
+        <p>Working weekdays 3pm–midnight at home · going out at nights when Angi is on duty overnight</p>
+        <p class="contact">📞 Aliza <a href="tel:+19174989490">+1 917 498 9490</a> · Noah <a href="tel:+13109944321">+1 310 994 4321</a></p>
       </div>
     </div>
 
     <div class="rules-box">
       <h3>What you cover</h3>
-      <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Daily 1–3pm:</strong> After Olga leaves, before Yulia arrives. Your standing coverage slot every day (except Tue/Wed when you also cover the morning).</span></div>
+      <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Daily 1pm–3pm:</strong> After Olga leaves, before Yulia arrives. Your standing coverage slot every day (except Tue/Wed when you also cover the morning).</span></div>
       <div class="rule-item"><span class="rule-icon">🌅</span><span><strong>Tue/Wed mornings:</strong> No Olga those days. You're on duty from 11pm the night before straight through to 1pm. (Madeline is up at 8am, Sylvie at 10am.)</span></div>
-      <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Monday:</strong> Angi's full day off. You cover 1–3pm as usual, and 9–11pm bedtime. Yulia has the afternoon.</span></div>
+      <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Monday:</strong> Angi's full day off. You cover 1pm–3pm as usual, and 9pm–11pm bedtime. Yulia has the afternoon.</span></div>
       <div class="rule-item"><span class="rule-icon">☀️</span><span><strong>Saturday daytime:</strong> After getting home from Friday overnight (~7am), you're on duty from 1pm–9pm before Angi starts her Saturday overnight.</span></div>
-      <div class="rule-item"><span class="rule-icon">☀️</span><span><strong>Sunday morning:</strong> After Saturday overnight, cover 7–8am until Olga arrives. Then you're free until 6pm when Olga leaves.</span></div>
+      <div class="rule-item"><span class="rule-icon">☀️</span><span><strong>Sunday morning:</strong> After Saturday overnight, cover 7am–8am until Olga arrives. Then you're free until 6pm when Olga leaves.</span></div>
     </div>
 
     <div class="rules-box">
@@ -956,7 +1032,7 @@
       <div class="rhythm-card">
         <h3>Standard weekday (no night out)</h3>
         <div class="rhythm-row"><span class="rhythm-time">Until noon</span><span>Sleeping (Olga covers kids)</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">1–3pm</span><span class="rhythm-who parents">Parents on duty</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">1pm–3pm</span><span class="rhythm-who parents">Parents on duty</span></div>
         <div class="rhythm-row"><span class="rhythm-time">3pm–midnight</span><span>Working from home</span></div>
         <div class="rhythm-row"><span class="rhythm-time">After midnight</span><span>Free / late night in</span></div>
       </div>
@@ -1002,7 +1078,7 @@
       <div class="rhythm-card">
         <h3>Madeline</h3>
         <div class="rhythm-row"><span class="rhythm-time">Wake up</span><span>8:00am — needs supervision immediately</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">Nap</span><span>3:30–5:00pm every day</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">Nap</span><span>3:30pm–5:00pm every day</span></div>
         <div class="rhythm-row"><span class="rhythm-time">Bedtime</span><span>~9:30pm</span></div>
         <div class="rhythm-row"><span class="rhythm-time">Morning</span><span>Needs active supervision — cannot self-entertain like Sylvie</span></div>
       </div>
@@ -1010,12 +1086,20 @@
 
     <div class="rules-box">
       <h3>Daily highlights</h3>
-      <div class="rule-item"><span class="rule-icon">🪩</span><span><strong>Mini disco:</strong> The nearby resort has a mini disco most evenings around 8–8:30pm. Both kids love it. Falls in Yulia's shift on weekdays, parents' shift on weekends (or Olga on Sundays).</span></div>
+      <div class="rule-item"><span class="rule-icon">🪩</span><span><strong>Mini disco:</strong> The nearby resort has a mini disco most evenings around 8pm–8:30pm. Both kids love it. Falls in Yulia's shift on weekdays, parents' shift on weekends (or Olga on Sundays).</span></div>
       <div class="rule-item"><span class="rule-icon">🎭</span><span><strong>Resort show:</strong> Most nights at 9pm at the nearby resort. Falls after bedtime starts so usually for parents/Angi to decide if older kids go.</span></div>
-      <div class="rule-item"><span class="rule-icon">😴</span><span><strong>Madeline's nap is non-negotiable:</strong> 3:30–5pm daily. Plan activities around it. She gets cranky without it.</span></div>
+      <div class="rule-item"><span class="rule-icon">😴</span><span><strong>Madeline's nap is non-negotiable:</strong> 3:30pm–5pm daily. Plan activities around it. She gets cranky without it.</span></div>
     </div>
   </div>
 </section>
+
+<!-- Day view modal -->
+<div id="day-modal" class="day-modal" aria-hidden="true">
+  <div class="day-modal-card" role="dialog" aria-modal="true" aria-label="Day detail">
+    <button class="day-modal-close" onclick="closeDay()" aria-label="Close">&times;</button>
+    <div id="day-modal-body" class="day-modal-body"></div>
+  </div>
+</div>
 
 <script>
   function showSection(id) {
@@ -1025,6 +1109,25 @@
     event.target.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  function openDay(dayEl) {
+    if (dayEl.classList.contains('inactive')) return;
+    document.getElementById('day-modal-body').innerHTML = dayEl.innerHTML;
+    document.getElementById('day-modal').classList.add('open');
+  }
+  function closeDay() {
+    document.getElementById('day-modal').classList.remove('open');
+  }
+
+  document.querySelectorAll('#calendar .day:not(.inactive)').forEach(function (d) {
+    d.addEventListener('click', function () { openDay(d); });
+  });
+  document.getElementById('day-modal').addEventListener('click', function (e) {
+    if (e.target.id === 'day-modal') closeDay();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeDay();
+  });
 </script>
 
 </body>
