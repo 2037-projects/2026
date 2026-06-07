@@ -225,6 +225,7 @@
     }
     .day.exception { border: 1.5px solid var(--blue-mid); }
     .day.rest-day { background: #EAF4ED; }
+    .day.half-rest { background: linear-gradient(to bottom, #EAF4ED 0%, #EAF4ED 50%, var(--white) 50%, var(--white) 100%); }
     .day-num {
       font-family: var(--serif);
       font-size: 1.1rem;
@@ -517,7 +518,7 @@
 <header class="site-header">
   <h1>Summer Care Schedule</h1>
   <div class="subtitle">Ibiza</div>
-  <div class="dates">July 6 – July 31, 2026</div>
+  <div class="dates">July 5 – July 31, 2026</div>
 </header>
 
 <nav class="nav-wrap">
@@ -599,7 +600,7 @@
       <div class="leg"><div class="leg-dot" style="background:var(--yulia-bg);border:1px solid var(--yulia)"></div>Yulia</div>
       <div class="leg"><div class="leg-dot" style="background:var(--parents-bg);border:1px solid var(--parents)"></div>Parents</div>
       <div class="leg"><div class="leg-dot" style="background:var(--olga-bg);border:1px solid var(--olga)"></div>Olga</div>
-      <div class="leg"><div class="leg-dot" style="background:var(--blue-light);border:1px solid var(--blue)"></div>Angi overnight</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--blue-light);border:1px dashed var(--blue)"></div>Angi potential overnight</div>
       <div class="leg"><div class="leg-dot" style="background:var(--goout-bg);border:1px solid var(--goout)"></div>Parents out</div>
       <div class="leg"><div class="leg-dot" style="background:#C8E6C9;border:1px solid #1A5C38"></div>Angi off</div>
     </div>
@@ -615,9 +616,12 @@
     </div>
 
     <!-- Week 1 -->
-    <div class="week-label">Week 1 — July 6–11</div>
+    <div class="week-label">Week 1 — July 5–11</div>
     <div class="cal-grid">
-      <div class="day inactive"></div>
+      <div class="day exception">
+        <div class="day-num">5</div><div class="day-name">Sun · arrival</div>
+        <span class="tag note">✈️ Travel day — Family &amp; Angi land IBZ at 6:15pm</span>
+      </div>
       <div class="day exception">
         <div class="day-num">6</div><div class="day-name">Mon · first day</div>
         <span class="slot olga">Olga 7am–1pm</span>
@@ -674,7 +678,7 @@
         <span class="slot parents">Parents all day + overnight</span>
         <span class="tag note">🚤 Boat day · Angi off (joins as guest) · parents on duty</span>
       </div>
-      <div class="day">
+      <div class="day half-rest">
         <div class="day-num">13</div><div class="day-name">Mon · Angi eve only</div>
         <span class="slot olga">Olga 7am–1pm</span>
         <span class="slot parents">Parents 1pm–3pm</span>
@@ -733,7 +737,7 @@
         <span class="slot parents">Parents 6pm–11pm</span>
         <span class="tag rest">Angi off — all Sun + Mon daytime</span>
       </div>
-      <div class="day">
+      <div class="day half-rest">
         <div class="day-num">20</div><div class="day-name">Mon · Angi eve only</div>
         <span class="slot olga">Olga 7am–1pm</span>
         <span class="slot parents">Parents 1pm–3pm</span>
@@ -791,7 +795,7 @@
         <span class="slot parents">Parents 6pm–11pm</span>
         <span class="tag rest">Angi off — all Sun + Mon daytime</span>
       </div>
-      <div class="day">
+      <div class="day half-rest">
         <div class="day-num">27</div><div class="day-name">Mon · Angi eve only</div>
         <span class="slot olga">Olga 7am–1pm</span>
         <span class="slot parents">Parents 1pm–3pm</span>
