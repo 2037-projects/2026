@@ -180,6 +180,35 @@
       border-radius: 3px;
       flex-shrink: 0;
     }
+    /* Clickable legend = calendar filter */
+    .filter-hint {
+      font-size: 0.74rem;
+      color: var(--ink-light);
+      margin-bottom: 0.5rem;
+    }
+    .leg {
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      font-family: var(--sans);
+    }
+    .leg:hover { border-color: var(--blue); color: var(--blue); }
+    .leg.leg-active { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .leg.leg-active .leg-dot { box-shadow: 0 0 0 1.5px #fff; }
+    .leg-clear {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+      font-weight: 500;
+    }
+    .leg-clear:hover { background: var(--ink-mid); color: #fff; border-color: var(--ink-mid); }
+    .legend.filtering .leg-clear { display: inline-flex; }
+    .day.day-dim { opacity: 0.3; }
+    .day.day-dim:hover { box-shadow: none; }
 
     /* ── CALENDAR ── */
     .week-label {
@@ -741,14 +770,16 @@
     <p class="section-title">July Calendar</p>
     <p class="section-intro">Full month at a glance. Tap any day for a closer look, or tap a tab above for your personal schedule.</p>
 
-    <div class="legend">
-      <div class="leg"><div class="leg-dot" style="background:var(--angi-bg);border:1px solid var(--angi)"></div>Angi</div>
-      <div class="leg"><div class="leg-dot" style="background:var(--yulia-bg);border:1px solid var(--yulia)"></div>Yulia</div>
-      <div class="leg"><div class="leg-dot" style="background:var(--parents-bg);border:1px solid var(--parents)"></div>Parents</div>
-      <div class="leg"><div class="leg-dot" style="background:var(--olga-bg);border:1px solid var(--olga)"></div>Olga</div>
-      <div class="leg"><div class="leg-dot" style="background:var(--blue-light);border:1px dashed var(--blue)"></div>Angi potential overnight</div>
-      <div class="leg"><div class="leg-dot" style="background:var(--goout-bg);border:1px solid var(--goout)"></div>Parents out</div>
-      <div class="leg"><div class="leg-dot" style="background:#C8E6C9;border:1px solid #1A5C38"></div>Angi off</div>
+    <p class="filter-hint">Tap a label to filter the calendar to just that view. Tap it again — or hit “Show all” — to clear.</p>
+    <div class="legend" id="cal-legend">
+      <div class="leg" data-filter="angi" onclick="filterCal('angi')"><div class="leg-dot" style="background:var(--angi-bg);border:1px solid var(--angi)"></div>Angi</div>
+      <div class="leg" data-filter="yulia" onclick="filterCal('yulia')"><div class="leg-dot" style="background:var(--yulia-bg);border:1px solid var(--yulia)"></div>Yulia</div>
+      <div class="leg" data-filter="parents" onclick="filterCal('parents')"><div class="leg-dot" style="background:var(--parents-bg);border:1px solid var(--parents)"></div>Parents</div>
+      <div class="leg" data-filter="olga" onclick="filterCal('olga')"><div class="leg-dot" style="background:var(--olga-bg);border:1px solid var(--olga)"></div>Olga</div>
+      <div class="leg" data-filter="overnight" onclick="filterCal('overnight')"><div class="leg-dot" style="background:var(--blue-light);border:1px dashed var(--blue)"></div>Angi potential overnight</div>
+      <div class="leg" data-filter="goout" onclick="filterCal('goout')"><div class="leg-dot" style="background:var(--goout-bg);border:1px solid var(--goout)"></div>Parents out</div>
+      <div class="leg" data-filter="off" onclick="filterCal('off')"><div class="leg-dot" style="background:#C8E6C9;border:1px solid #1A5C38"></div>Angi off</div>
+      <button class="leg leg-clear" onclick="clearCalFilter()">✕ Show all</button>
     </div>
 
     <div class="cal-grid headers">
@@ -1246,11 +1277,11 @@
 
     <div class="rhythm-grid">
       <div class="rhythm-card">
-        <h3>Standard weekday (no night out)</h3>
+        <h3>Standard weekday (possible night out)</h3>
         <div class="rhythm-row"><span class="rhythm-time">Until noon</span><span>Sleeping (Olga covers kids)</span></div>
         <div class="rhythm-row"><span class="rhythm-time">1pm–3pm</span><span class="rhythm-who parents">Parents on duty</span></div>
         <div class="rhythm-row"><span class="rhythm-time">3pm–midnight</span><span>Working from home</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">After midnight</span><span>Free / late night in</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">After midnight</span><span>Possible night out if coordinated with Angi</span></div>
       </div>
       <div class="rhythm-card">
         <h3>Tue/Wed (no Olga)</h3>
@@ -1354,6 +1385,63 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeDay();
   });
+
+  /* ══════════════════════════════════════
+     CALENDAR LEGEND FILTER
+  ══════════════════════════════════════ */
+  (function () {
+    // For each filter, the slot/tag selectors that stay visible.
+    const FILTERS = {
+      angi:      ['.slot.angi', '.tag.maybe', '.tag.rest'],
+      yulia:     ['.slot.yulia'],
+      parents:   ['.slot.parents', '.tag.goout', '.tag.maybe'],
+      olga:      ['.slot.olga', '.tag.olga'],
+      overnight: ['.tag.maybe'],
+      goout:     ['.tag.goout'],
+      off:       ['.tag.rest'],
+    };
+    let current = null;
+    const cal = () => document.getElementById('calendar');
+
+    function apply(key) {
+      const keep = FILTERS[key];
+      const root = cal();
+      root.querySelectorAll('.slot, .tag').forEach(function (el) {
+        el.style.display = keep.some(function (sel) { return el.matches(sel); }) ? '' : 'none';
+      });
+      // Dim any day with nothing left to show.
+      root.querySelectorAll('.cal-grid .day').forEach(function (day) {
+        if (day.classList.contains('inactive')) return;
+        const visible = Array.prototype.some.call(
+          day.querySelectorAll('.slot, .tag'),
+          function (el) { return el.style.display !== 'none'; }
+        );
+        day.classList.toggle('day-dim', !visible);
+      });
+    }
+
+    window.filterCal = function (key) {
+      if (!FILTERS[key]) return;
+      if (current === key) { window.clearCalFilter(); return; }  // toggle off
+      current = key;
+      apply(key);
+      const legend = document.getElementById('cal-legend');
+      legend.classList.add('filtering');
+      legend.querySelectorAll('.leg').forEach(function (l) {
+        l.classList.toggle('leg-active', l.getAttribute('data-filter') === key);
+      });
+    };
+
+    window.clearCalFilter = function () {
+      current = null;
+      const root = cal();
+      root.querySelectorAll('.slot, .tag').forEach(function (el) { el.style.display = ''; });
+      root.querySelectorAll('.day-dim').forEach(function (d) { d.classList.remove('day-dim'); });
+      const legend = document.getElementById('cal-legend');
+      legend.classList.remove('filtering');
+      legend.querySelectorAll('.leg-active').forEach(function (l) { l.classList.remove('leg-active'); });
+    };
+  })();
 
   /* ══════════════════════════════════════
      ANGI HOURS CALCULATOR
