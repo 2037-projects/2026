@@ -262,6 +262,8 @@
     .tag.note    { background: var(--note-bg);   color: var(--note); }
     .tag.warn    { background: var(--warn-bg);   color: var(--warn); }
     .tag.rest    { background: #C8E6C9;          color: #1A5C38; }
+    .tag.overnight { background: var(--blue-light); color: var(--blue); font-weight: 600; }
+    .tag.maybe   { background: var(--note-bg); color: var(--note); border: 1px dashed var(--note); }
     .week-summary {
       font-size: 0.78rem;
       color: var(--ink-mid);
@@ -514,7 +516,7 @@
 
 <header class="site-header">
   <h1>Summer Care Schedule</h1>
-  <div class="subtitle">Ibiza · July &amp; August 2026</div>
+  <div class="subtitle">Ibiza · July 2026</div>
   <div class="dates">July 7 – July 30, 2026</div>
 </header>
 
@@ -536,13 +538,12 @@
 <section id="overview" class="section active">
   <div class="page-wrap">
     <p class="section-title">How it all works</p>
-    <p class="section-intro">Four caregivers, two kids, and one beautiful month in Ibiza. Here's the complete picture — tap any tab above to see your personal schedule.</p>
+    <p class="section-intro">Five caregivers, two kids, and one beautiful month in Ibiza. Here's the complete picture — tap any tab above to see your personal schedule.</p>
 
     <div class="stats-row">
-      <div class="stat-pill"><div class="stat-val">4</div><div class="stat-label">Caregivers</div></div>
+      <div class="stat-pill"><div class="stat-val">5</div><div class="stat-label">Caregivers</div></div>
       <div class="stat-pill"><div class="stat-val">24</div><div class="stat-label">Days</div></div>
       <div class="stat-pill"><div class="stat-val">2</div><div class="stat-label">Kids</div></div>
-      <div class="stat-pill"><div class="stat-val">8</div><div class="stat-label">Weekend nights out</div></div>
     </div>
 
     <div class="rhythm-grid">
@@ -552,11 +553,13 @@
         <div class="rhythm-row"><span class="rhythm-time">Madeline</span><span>Up at 8am · Nap 3:30pm–5pm · Bedtime 9:30pm</span></div>
         <div class="rhythm-row"><span class="rhythm-time">Mini disco</span><span>Nearby resort, ~8pm–8:30pm most nights</span></div>
         <div class="rhythm-row"><span class="rhythm-time">Resort show</span><span>Most nights at 9pm</span></div>
+        <p style="margin-top:8px;font-style:italic;font-size:0.78rem;color:var(--ink-light)">*Exact schedule will settle after overcoming jetlag</p>
       </div>
       <div class="rhythm-card">
         <h3>Daily Shape</h3>
-        <div class="rhythm-row"><span class="rhythm-time">7am–1pm</span><span class="rhythm-who olga">Olga</span><span style="margin-left:6px;font-size:0.78rem;color:var(--ink-mid)">(Mon/Thu/Fri/Sat) or Parents (Tue/Wed)</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">1pm–3pm</span><span class="rhythm-who parents">Parents</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">7am–1pm</span><span class="rhythm-who olga">Olga</span><span style="margin-left:6px;font-size:0.78rem;color:var(--ink-mid)">(Mon/Thu/Fri/Sat) or <strong>Parents</strong> (Tue/Wed)</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">8am–6pm</span><span class="rhythm-who olga">Olga</span><span style="margin-left:6px;font-size:0.78rem;color:var(--ink-mid)">(Sundays)</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">1pm–3pm</span><span class="rhythm-who parents"><strong>Parents</strong></span></div>
         <div class="rhythm-row"><span class="rhythm-time">3pm–9pm</span><span class="rhythm-who yulia">Yulia</span><span style="margin-left:6px;font-size:0.78rem;color:var(--ink-mid)">(weekdays only)</span></div>
         <div class="rhythm-row"><span class="rhythm-time">9pm–11pm</span><span class="rhythm-who angi">Angi</span><span style="margin-left:6px;font-size:0.78rem;color:var(--ink-mid)">bedtime</span></div>
         <div class="rhythm-row"><span class="rhythm-time">Fri + Sat nights</span><span class="rhythm-who angi">Angi</span><span style="margin-left:6px;font-size:0.78rem;color:var(--ink-mid)">overnight 9pm–7am</span></div>
@@ -564,21 +567,21 @@
     </div>
 
     <div class="rules-box">
-      <h3>Key rules to know</h3>
+      <h3>Key things to know</h3>
       <div class="rule-item"><span class="rule-icon">🌙</span><span><strong>Friday + Saturday nights</strong> — Angi is on overnight duty 9pm–7am. Parents can go out until 7am.</span></div>
-      <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Weeknight outs (Tue/Wed/Thu)</strong> — Angi can extend her 9pm shift to a full overnight. Decide 1–2 days ahead. Up to 2 weeknight outs per week.</span></div>
-      <div class="rule-item"><span class="rule-icon">😴</span><span><strong>Angi's rest</strong> — Every Saturday 7am through Sunday 7pm (36 hrs). She resumes Sunday evening.</span></div>
-      <div class="rule-item"><span class="rule-icon">🚤</span><span><strong>July 12 (boat day)</strong> — Family + Angi on the boat. Olga covers morning as usual. Angi on overnight as normal.</span></div>
+      <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Parent weeknights out:</strong> (Tue/Wed/Thu) — Angi can extend her 9pm shift to a full overnight. Decide 1–2 days ahead. Up to 2-4 parent weeknights out per week.</span></div>
+      <div class="rule-item"><span class="rule-icon">😴</span><span><strong>Angi's rest</strong> — All of Sunday + Monday daytime (~1.5 days off). She resumes Monday at 9pm for bedtime. Olga + parents cover Sunday.</span></div>
+      <div class="rule-item"><span class="rule-icon">🚤</span><span><strong>July 12 (boat day)</strong> — Family + Angi on the boat all day. No Olga that day — parents on duty. Angi on overnight as normal.</span></div>
       <div class="rule-item"><span class="rule-icon">📌</span><span><strong>July 14 (parent commitment 9am–1pm)</strong> — Fully covered by Olga's standing morning shift. No gap.</span></div>
       <div class="rule-item"><span class="rule-icon">💤</span><span><strong>Tue/Wed mornings</strong> — No Olga. Parents on duty from 11pm the night before through 1pm the next day.</span></div>
     </div>
 
     <div class="rules-box">
       <h3>Caregiver snapshot</h3>
-      <div class="rule-item"><span class="rule-icon" style="color:var(--angi)">◆</span><span><strong>Angi (au pair)</strong> — Lives with the family. ~28 hrs/week base. Bedtimes nightly + Fri/Sat overnights. Off Sun 7am–Sun 7pm.</span></div>
+      <div class="rule-item"><span class="rule-icon" style="color:var(--angi)">◆</span><span><strong>Angi (au pair)</strong> — Lives with the family. ~28 hrs/week base + up to 45 hrs/week total if parents go out on weeknights. Bedtimes nightly (off Sun) + Fri/Sat overnights. Off all of Sunday + Monday daytime (resumes Monday 9pm bedtime).</span></div>
       <div class="rule-item"><span class="rule-icon" style="color:var(--olga)">◆</span><span><strong>Olga (babysitter)</strong> — ~34 hrs/week. Mornings Mon/Thu/Fri/Sat 7am–1pm + Sundays 8am–6pm. No overnights.</span></div>
       <div class="rule-item"><span class="rule-icon" style="color:var(--yulia)">◆</span><span><strong>Yulia (friend/neighbor)</strong> — Weekdays only 3pm–9pm. Brings daughter Sana (a few years older than Sylvie).</span></div>
-      <div class="rule-item"><span class="rule-icon" style="color:var(--parents)">◆</span><span><strong>Parents</strong> — Working 3pm–midnight daily. Cover Tue/Wed mornings + 1pm–3pm gaps + bedtime on Angi's off days.</span></div>
+      <div class="rule-item"><span class="rule-icon" style="color:var(--parents)">◆</span><span><strong>Parents</strong> — Working 3pm–midnight daily. Cover Tue/Wed mornings + 1pm–3pm gaps + Sunday evening/bedtime.</span></div>
     </div>
   </div>
 </section>
@@ -596,8 +599,9 @@
       <div class="leg"><div class="leg-dot" style="background:var(--yulia-bg);border:1px solid var(--yulia)"></div>Yulia</div>
       <div class="leg"><div class="leg-dot" style="background:var(--parents-bg);border:1px solid var(--parents)"></div>Parents</div>
       <div class="leg"><div class="leg-dot" style="background:var(--olga-bg);border:1px solid var(--olga)"></div>Olga</div>
-      <div class="leg"><div class="leg-dot" style="background:var(--goout-bg);border:1px solid var(--goout)"></div>Go-out night</div>
-      <div class="leg"><div class="leg-dot" style="background:#C8E6C9;border:1px solid #1A5C38"></div>Angi rest</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--blue-light);border:1px solid var(--blue)"></div>Angi overnight</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--goout-bg);border:1px solid var(--goout)"></div>Parents out</div>
+      <div class="leg"><div class="leg-dot" style="background:#C8E6C9;border:1px solid #1A5C38"></div>Angi off</div>
     </div>
 
     <div class="cal-grid headers">
@@ -627,14 +631,14 @@
         <span class="slot parents">Parents 11pm–1pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag goout">Go out → until 7am</span>
+        <span class="tag maybe">Parents on duty overnight · or Angi can cover if arranged 1–2 days ahead</span>
       </div>
       <div class="day">
         <div class="day-num">9</div><div class="day-name">Wed · no Olga</div>
         <span class="slot parents">Parents 11pm–1pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag goout">Go out → until 7am</span>
+        <span class="tag maybe">Parents on duty overnight · or Angi can cover if arranged 1–2 days ahead</span>
       </div>
       <div class="day">
         <div class="day-num">10</div><div class="day-name">Thu</div>
@@ -642,45 +646,44 @@
         <span class="slot parents">Parents 1pm–3pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag goout">Go out → until 7am</span>
+        <span class="tag maybe">Parents on duty overnight · or Angi can cover if arranged 1–2 days ahead</span>
       </div>
       <div class="day">
         <div class="day-num">11</div><div class="day-name">Fri</div>
         <span class="slot olga">Olga 7am–1pm</span>
         <span class="slot parents">Parents 1pm–3pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
-        <span class="slot angi">Angi 9pm–7am ★</span>
-        <span class="tag goout">Go out → until 7am ✓</span>
+        <span class="slot angi">Angi 9pm–7am</span>
+        <span class="tag overnight">🌙 Overnight</span>
+        <span class="tag goout">Parents can go out · home by 7am</span>
       </div>
       <div class="day exception">
         <div class="day-num">12</div><div class="day-name">Sat · boat day</div>
-        <span class="slot olga">Olga 7am–1pm</span>
-        <span class="slot parents">Parents 1pm–9pm</span>
-        <span class="slot angi">Angi 9pm–7am ★</span>
-        <span class="tag note">Family + Angi on boat</span>
-        <span class="tag goout">Go out → until 7am ✓</span>
+        <span class="slot parents">Parents 7am–9pm</span>
+        <span class="slot angi">Angi 9pm–7am</span>
+        <span class="tag overnight">🌙 Overnight</span>
+        <span class="tag note">🚤 Boat day — family + Angi all day, no Olga</span>
+        <span class="tag goout">Parents can go out · home by 7am</span>
       </div>
     </div>
-    <div class="week-summary">Angi ~28 hrs base · Olga Mon+Thu+Fri+Sat = 24 hrs · Go-out nights: Fri ✓ Sat ✓ + any Tue/Wed/Thu</div>
+    <div class="week-summary">Angi ~28 hrs base · Olga Mon+Thu+Fri = 18 hrs (off July 12) · Parents out: Fri + Sat</div>
 
     <!-- Week 2 -->
     <div class="week-label">Week 2 — July 13–19</div>
     <div class="cal-grid">
       <div class="day rest-day">
-        <div class="day-num">13</div><div class="day-name">Sun · Angi rest</div>
+        <div class="day-num">13</div><div class="day-name">Sun · Angi off</div>
         <span class="slot parents">Parents 7am–8am</span>
         <span class="slot olga">Olga 8am–6pm</span>
-        <span class="slot parents">Parents 6pm–7pm</span>
-        <span class="slot angi">Angi resumes 7pm</span>
-        <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag rest">Rest: Sat 7am→Sun 7pm ✓</span>
+        <span class="slot parents">Parents 6pm–11pm</span>
+        <span class="tag rest">Angi off — all Sun + Mon daytime</span>
       </div>
       <div class="day exception">
         <div class="day-num">14</div><div class="day-name">Mon · parent commitment</div>
         <span class="slot olga">Olga 7am–1pm</span>
         <span class="slot parents">Parents 1pm–3pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
-        <span class="slot parents">Parents 9pm–11pm</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
         <span class="tag note">Parents out 9am–1pm → Olga covers ✓</span>
       </div>
       <div class="day">
@@ -688,14 +691,14 @@
         <span class="slot parents">Parents 11pm–1pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag goout">Go out → until 7am</span>
+        <span class="tag maybe">Parents on duty overnight · or Angi can cover if arranged 1–2 days ahead</span>
       </div>
       <div class="day">
         <div class="day-num">16</div><div class="day-name">Wed · no Olga</div>
         <span class="slot parents">Parents 11pm–1pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag goout">Go out → until 7am</span>
+        <span class="tag maybe">Parents on duty overnight · or Angi can cover if arranged 1–2 days ahead</span>
       </div>
       <div class="day">
         <div class="day-num">17</div><div class="day-name">Thu</div>
@@ -703,59 +706,59 @@
         <span class="slot parents">Parents 1pm–3pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag goout">Go out → until 7am</span>
+        <span class="tag maybe">Parents on duty overnight · or Angi can cover if arranged 1–2 days ahead</span>
       </div>
       <div class="day">
         <div class="day-num">18</div><div class="day-name">Fri</div>
         <span class="slot olga">Olga 7am–1pm</span>
         <span class="slot parents">Parents 1pm–3pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
-        <span class="slot angi">Angi 9pm–7am ★</span>
-        <span class="tag goout">Go out → until 7am ✓</span>
+        <span class="slot angi">Angi 9pm–7am</span>
+        <span class="tag overnight">🌙 Overnight</span>
+        <span class="tag goout">Parents can go out · home by 7am</span>
       </div>
       <div class="day">
         <div class="day-num">19</div><div class="day-name">Sat</div>
         <span class="slot olga">Olga 7am–1pm</span>
         <span class="slot parents">Parents 1pm–9pm</span>
-        <span class="slot angi">Angi 9pm–7am ★</span>
-        <span class="tag goout">Go out → until 7am ✓</span>
+        <span class="slot angi">Angi 9pm–7am</span>
+        <span class="tag overnight">🌙 Overnight</span>
+        <span class="tag goout">Parents can go out · home by 7am</span>
       </div>
     </div>
-    <div class="week-summary">Angi ~28 hrs base · Olga Mon+Thu+Fri+Sat+Sun = 34 hrs · Angi rest: Sat 7am→Sun 7pm ✓</div>
+    <div class="week-summary">Angi ~28 hrs base · Olga Mon+Thu+Fri+Sat+Sun = 34 hrs · Angi off: all Sun + Mon daytime</div>
 
     <!-- Week 3 -->
     <div class="week-label">Week 3 — July 20–26</div>
     <div class="cal-grid">
       <div class="day rest-day">
-        <div class="day-num">20</div><div class="day-name">Sun · Angi rest</div>
+        <div class="day-num">20</div><div class="day-name">Sun · Angi off</div>
         <span class="slot parents">Parents 7am–8am</span>
         <span class="slot olga">Olga 8am–6pm</span>
-        <span class="slot parents">Parents 6pm–7pm</span>
-        <span class="slot angi">Angi resumes 7pm</span>
-        <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag rest">Rest: Sat 7am→Sun 7pm ✓</span>
+        <span class="slot parents">Parents 6pm–11pm</span>
+        <span class="tag rest">Angi off — all Sun + Mon daytime</span>
       </div>
       <div class="day">
-        <div class="day-num">21</div><div class="day-name">Mon · Angi off</div>
+        <div class="day-num">21</div><div class="day-name">Mon · Angi eve only</div>
         <span class="slot olga">Olga 7am–1pm</span>
         <span class="slot parents">Parents 1pm–3pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
-        <span class="slot parents">Parents 9pm–11pm</span>
-        <span class="tag note">Angi fully off all day</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
+        <span class="tag note">Angi off daytime · resumes 9pm for bedtime</span>
       </div>
       <div class="day">
         <div class="day-num">22</div><div class="day-name">Tue · no Olga</div>
         <span class="slot parents">Parents 11pm–1pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag goout">Go out → until 7am</span>
+        <span class="tag maybe">Parents on duty overnight · or Angi can cover if arranged 1–2 days ahead</span>
       </div>
       <div class="day">
         <div class="day-num">23</div><div class="day-name">Wed · no Olga</div>
         <span class="slot parents">Parents 11pm–1pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag goout">Go out → until 7am</span>
+        <span class="tag maybe">Parents on duty overnight · or Angi can cover if arranged 1–2 days ahead</span>
       </div>
       <div class="day">
         <div class="day-num">24</div><div class="day-name">Thu</div>
@@ -763,52 +766,52 @@
         <span class="slot parents">Parents 1pm–3pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag goout">Go out → until 7am</span>
+        <span class="tag maybe">Parents on duty overnight · or Angi can cover if arranged 1–2 days ahead</span>
       </div>
       <div class="day">
         <div class="day-num">25</div><div class="day-name">Fri</div>
         <span class="slot olga">Olga 7am–1pm</span>
         <span class="slot parents">Parents 1pm–3pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
-        <span class="slot angi">Angi 9pm–7am ★</span>
-        <span class="tag goout">Go out → until 7am ✓</span>
+        <span class="slot angi">Angi 9pm–7am</span>
+        <span class="tag overnight">🌙 Overnight</span>
+        <span class="tag goout">Parents can go out · home by 7am</span>
       </div>
       <div class="day">
         <div class="day-num">26</div><div class="day-name">Sat</div>
         <span class="slot olga">Olga 7am–1pm</span>
         <span class="slot parents">Parents 1pm–9pm</span>
-        <span class="slot angi">Angi 9pm–7am ★</span>
-        <span class="tag goout">Go out → until 7am ✓</span>
+        <span class="slot angi">Angi 9pm–7am</span>
+        <span class="tag overnight">🌙 Overnight</span>
+        <span class="tag goout">Parents can go out · home by 7am</span>
       </div>
     </div>
-    <div class="week-summary">Angi ~28 hrs base · Olga Mon+Thu+Fri+Sat+Sun = 34 hrs · Angi rest: Sat 7am→Sun 7pm ✓</div>
+    <div class="week-summary">Angi ~28 hrs base · Olga Mon+Thu+Fri+Sat+Sun = 34 hrs · Angi off: all Sun + Mon daytime</div>
 
     <!-- Week 4 -->
     <div class="week-label">Week 4 — July 27–30 (partial)</div>
     <div class="cal-grid">
       <div class="day rest-day">
-        <div class="day-num">27</div><div class="day-name">Sun · Angi rest</div>
+        <div class="day-num">27</div><div class="day-name">Sun · Angi off</div>
         <span class="slot parents">Parents 7am–8am</span>
         <span class="slot olga">Olga 8am–6pm</span>
-        <span class="slot parents">Parents 6pm–7pm</span>
-        <span class="slot angi">Angi resumes 7pm</span>
-        <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag rest">Rest: Sat 7am→Sun 7pm ✓</span>
+        <span class="slot parents">Parents 6pm–11pm</span>
+        <span class="tag rest">Angi off — all Sun + Mon daytime</span>
       </div>
       <div class="day">
-        <div class="day-num">28</div><div class="day-name">Mon · Angi off</div>
+        <div class="day-num">28</div><div class="day-name">Mon · Angi eve only</div>
         <span class="slot olga">Olga 7am–1pm</span>
         <span class="slot parents">Parents 1pm–3pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
-        <span class="slot parents">Parents 9pm–11pm</span>
-        <span class="tag note">Angi fully off all day</span>
+        <span class="slot angi">Angi 9pm–11pm</span>
+        <span class="tag note">Angi off daytime · resumes 9pm for bedtime</span>
       </div>
       <div class="day">
         <div class="day-num">29</div><div class="day-name">Tue · no Olga</div>
         <span class="slot parents">Parents 11pm–1pm</span>
         <span class="slot yulia">Yulia 3pm–9pm</span>
         <span class="slot angi">Angi 9pm–11pm</span>
-        <span class="tag goout">Go out → until 7am</span>
+        <span class="tag maybe">Parents on duty overnight · or Angi can cover if arranged 1–2 days ahead</span>
       </div>
       <div class="day exception">
         <div class="day-num">30</div><div class="day-name">Wed · last day</div>
@@ -843,19 +846,19 @@
     <div class="stats-row">
       <div class="stat-pill"><div class="stat-val">~28</div><div class="stat-label">Base hrs/week</div></div>
       <div class="stat-pill"><div class="stat-val">45</div><div class="stat-label">Weekly max</div></div>
-      <div class="stat-pill"><div class="stat-val">36 hrs</div><div class="stat-label">Rest window</div></div>
+      <div class="stat-pill"><div class="stat-val">1.5 days</div><div class="stat-label">Time off</div></div>
       <div class="stat-pill"><div class="stat-val">10</div><div class="stat-label">Max shift hrs</div></div>
     </div>
 
     <div class="rules-box">
       <h3>Your weekly rhythm</h3>
-      <div class="rule-item"><span class="rule-icon">🌙</span><span><strong>Every night (Tue–Sun):</strong> On duty 9pm–11pm for bedtimes. Madeline sleeps ~9:30pm, Sylvie ~10pm.</span></div>
+      <div class="rule-item"><span class="rule-icon">🌙</span><span><strong>Mon–Thu nights:</strong> On duty 9pm–11pm for bedtimes. Madeline sleeps ~9:30pm, Sylvie ~10pm.</span></div>
       <div class="rule-item"><span class="rule-icon">★</span><span><strong>Friday night:</strong> Full overnight 9pm–7am. Parents going out — you're responsible until they're home.</span></div>
       <div class="rule-item"><span class="rule-icon">★</span><span><strong>Saturday night:</strong> Full overnight 9pm–7am. Same as Friday.</span></div>
-      <div class="rule-item"><span class="rule-icon">😴</span><span><strong>Your rest:</strong> Saturday 7am → Sunday 7pm (36 consecutive hours off). Olga covers Sunday daytime.</span></div>
-      <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Monday:</strong> Fully off all day. Parents and Yulia cover everything.</span></div>
+      <div class="rule-item"><span class="rule-icon">😴</span><span><strong>Your time off:</strong> All of Sunday + Monday daytime (~1.5 consecutive days off). Olga + parents cover Sunday, including bedtime.</span></div>
+      <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Monday:</strong> Off during the day (Olga/Yulia/parents cover). You return at 9pm for bedtime.</span></div>
       <div class="rule-item"><span class="rule-icon">🎉</span><span><strong>Weeknight outs (Tue/Wed/Thu):</strong> If parents want to go out, your 9pm shift extends to a full overnight (9pm–7am). You'll get 1–2 days' notice.</span></div>
-      <div class="rule-item"><span class="rule-icon">🚤</span><span><strong>July 12 (boat day):</strong> Join the family on the boat during the day. Olga covers the morning. You're on overnight as usual from 9pm.</span></div>
+      <div class="rule-item"><span class="rule-icon">🚤</span><span><strong>July 12 (boat day):</strong> Join the family on the boat all day (no Olga that day). You're on overnight as usual from 9pm.</span></div>
     </div>
 
     <div class="rules-box">
@@ -879,14 +882,14 @@
       </div>
       <div class="rhythm-card">
         <h3>Saturday</h3>
-        <div class="rhythm-row"><span class="rhythm-time">7am–9pm</span><span>Off duty — your rest day begins at 7am</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">7am–9pm</span><span>Off duty — recovering from Friday's overnight</span></div>
         <div class="rhythm-row"><span class="rhythm-time">9pm–7am ★</span><span class="rhythm-who angi">Angi overnight</span><span style="margin-left:6px;font-size:0.78rem">10 hrs · parents out</span></div>
       </div>
       <div class="rhythm-card">
-        <h3>Sunday (rest day)</h3>
-        <div class="rhythm-row"><span class="rhythm-time">7am–7pm</span><span>Off — your 36-hr rest window. Olga covers 8am–6pm.</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">7pm–9pm</span><span class="rhythm-who angi">Angi resumes</span></div>
-        <div class="rhythm-row"><span class="rhythm-time">9pm–11pm</span><span class="rhythm-who angi">Angi on duty</span><span style="margin-left:6px;font-size:0.78rem">Bedtimes</span></div>
+        <h3>Sunday + Monday (off)</h3>
+        <div class="rhythm-row"><span class="rhythm-time">All Sunday</span><span>Off — Olga covers 8am–6pm, parents cover the rest incl. bedtime</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">Mon daytime</span><span>Off — Olga / Yulia / parents cover</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">Mon 9pm–11pm</span><span class="rhythm-who angi">Angi resumes</span><span style="margin-left:6px;font-size:0.78rem">Bedtime</span></div>
       </div>
     </div>
   </div>
@@ -918,7 +921,7 @@
       <div class="rule-item"><span class="rule-icon">☀️</span><span><strong>Sunday:</strong> 8am–6pm (10 hrs). This is Angi's rest day — you're the primary daytime caregiver.</span></div>
       <div class="rule-item"><span class="rule-icon">🚫</span><span><strong>Tuesday + Wednesday:</strong> Your days off. Parents cover those mornings.</span></div>
       <div class="rule-item"><span class="rule-icon">🚫</span><span><strong>No overnights:</strong> Your shift always ends by 6pm (Sunday) or 1pm (all other days). No split shifts.</span></div>
-      <div class="rule-item"><span class="rule-icon">🚤</span><span><strong>July 12 (boat day):</strong> Normal morning shift 7am–1pm as usual. Family is on the boat — just the kids with you in the morning.</span></div>
+      <div class="rule-item"><span class="rule-icon">🚤</span><span><strong>July 12 (boat day):</strong> You're off this Saturday — parents and Angi cover the full day on the boat.</span></div>
       <div class="rule-item"><span class="rule-icon">📌</span><span><strong>July 14 (Monday):</strong> Parents have a commitment 9am–1pm — your standing shift covers exactly this window. No change needed.</span></div>
     </div>
 
@@ -1014,16 +1017,16 @@
       <h3>What you cover</h3>
       <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Daily 1pm–3pm:</strong> After Olga leaves, before Yulia arrives. Your standing coverage slot every day (except Tue/Wed when you also cover the morning).</span></div>
       <div class="rule-item"><span class="rule-icon">🌅</span><span><strong>Tue/Wed mornings:</strong> No Olga those days. You're on duty from 11pm the night before straight through to 1pm. (Madeline is up at 8am, Sylvie at 10am.)</span></div>
-      <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Monday:</strong> Angi's full day off. You cover 1pm–3pm as usual, and 9pm–11pm bedtime. Yulia has the afternoon.</span></div>
+      <div class="rule-item"><span class="rule-icon">📅</span><span><strong>Monday:</strong> Angi off during the day. You cover 1pm–3pm as usual; Yulia has the afternoon. Angi returns at 9pm for bedtime.</span></div>
       <div class="rule-item"><span class="rule-icon">☀️</span><span><strong>Saturday daytime:</strong> After getting home from Friday overnight (~7am), you're on duty from 1pm–9pm before Angi starts her Saturday overnight.</span></div>
-      <div class="rule-item"><span class="rule-icon">☀️</span><span><strong>Sunday morning:</strong> After Saturday overnight, cover 7am–8am until Olga arrives. Then you're free until 6pm when Olga leaves.</span></div>
+      <div class="rule-item"><span class="rule-icon">☀️</span><span><strong>Sunday:</strong> After Saturday overnight, cover 7am–8am until Olga arrives (she's on 8am–6pm). Then you're on from 6pm through bedtime — Angi is off all day Sunday.</span></div>
     </div>
 
     <div class="rules-box">
       <h3>Going out — your options</h3>
       <div class="rule-item"><span class="rule-icon">★</span><span><strong>Friday night (every week):</strong> Angi on overnight 9pm–7am. Go out until 7am.</span></div>
       <div class="rule-item"><span class="rule-icon">★</span><span><strong>Saturday night (every week):</strong> Angi on overnight 9pm–7am. Go out until 7am.</span></div>
-      <div class="rule-item"><span class="rule-icon">🎉</span><span><strong>Tue/Wed/Thu nights:</strong> Give Angi 1–2 days' notice and she'll extend to a full overnight (9pm–7am). Up to 2 weeknights per week.</span></div>
+      <div class="rule-item"><span class="rule-icon">🎉</span><span><strong>Tue/Wed/Thu nights:</strong> Give Angi 1–2 days' notice and she'll extend to a full overnight (9pm–7am). Up to 2-4 weeknights per week (2 full or 4 half nights).</span></div>
       <div class="rule-item"><span class="rule-icon">⚠️</span><span><strong>If you go out on a Tue/Wed/Thu night:</strong> You need to cover the morning after (home by 6am, kids up at 8am). That's your Tue/Wed no-Olga morning.</span></div>
     </div>
 
@@ -1051,7 +1054,7 @@
       </div>
       <div class="rhythm-card">
         <h3>Key dates</h3>
-        <div class="rhythm-row"><span class="rhythm-time">July 12</span><span>Boat day 🚤 — family + Angi. Olga covers morning.</span></div>
+        <div class="rhythm-row"><span class="rhythm-time">July 12</span><span>Boat day 🚤 — family + Angi all day. No Olga.</span></div>
         <div class="rhythm-row"><span class="rhythm-time">July 14</span><span>Parent commitment 9am–1pm. Olga covers. No action needed.</span></div>
       </div>
     </div>
