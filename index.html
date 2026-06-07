@@ -461,6 +461,10 @@
     .caregiver-hero .contact a:hover { text-decoration: underline; }
 
     /* ── RESPONSIVE ── */
+    /* Swipe hint on the nav tabs (mobile only) */
+    .nav-scroll-hint { display: none; }
+    @keyframes navNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3px); } }
+
     @media (max-width: 600px) {
       .cal-grid { gap: 3px; }
       .day { min-height: 140px; padding: 5px 4px; }
@@ -469,6 +473,36 @@
       .tag { font-size: 0.58rem; }
       .page-wrap { padding: 1.25rem 0.75rem 3rem; }
       .rhythm-card { padding: 1rem; }
+
+      /* Overview stat pills: fit all three on one row */
+      #overview .stats-row { flex-wrap: nowrap; gap: 6px; }
+      #overview .stat-pill { flex: 1 1 0; min-width: 0; padding: 0.6rem 0.35rem; }
+      #overview .stat-val { font-size: 1.25rem; }
+      #overview .stat-label { font-size: 0.6rem; letter-spacing: 0; margin-top: 2px; }
+
+      /* Tighter nav tabs so more fit before scrolling */
+      .nav-tab { padding: 0.85rem 0.8rem; font-size: 0.72rem; letter-spacing: 0.03em; }
+
+      /* Right-edge fade + chevron telling the user to swipe for more tabs */
+      .nav-scroll-hint {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: absolute;
+        top: 0; right: 0; bottom: 0;
+        width: 42px;
+        padding-right: 9px;
+        pointer-events: none;
+        background: linear-gradient(to right, rgba(253,252,250,0), var(--white) 60%);
+        color: var(--blue);
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 1;
+        z-index: 2;
+        transition: opacity 0.2s;
+        animation: navNudge 1.5s ease-in-out infinite;
+      }
+      .nav-wrap.scroll-end .nav-scroll-hint { opacity: 0; }
     }
 
     /* ── DAY MODAL (day view) ── */
@@ -706,6 +740,7 @@
     <button class="nav-tab" onclick="showSection('parents')">Parents</button>
     <button class="nav-tab" onclick="showSection('children')">The Kids</button>
   </div>
+  <div class="nav-scroll-hint" aria-hidden="true">›</div>
 </nav>
 
 <!-- ══════════════════════════════════════
@@ -1443,6 +1478,23 @@
       legend.classList.remove('filtering');
       legend.querySelectorAll('.leg-active').forEach(function (l) { l.classList.remove('leg-active'); });
     };
+  })();
+
+  /* ══════════════════════════════════════
+     NAV SWIPE HINT (mobile)
+  ══════════════════════════════════════ */
+  (function () {
+    var tabs = document.querySelector('.nav-tabs');
+    var wrap = document.querySelector('.nav-wrap');
+    if (!tabs || !wrap) return;
+    function update() {
+      var atEnd = tabs.scrollLeft + tabs.clientWidth >= tabs.scrollWidth - 4;
+      var noOverflow = tabs.scrollWidth <= tabs.clientWidth + 1;
+      wrap.classList.toggle('scroll-end', atEnd || noOverflow);
+    }
+    tabs.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   })();
 
   /* ══════════════════════════════════════
