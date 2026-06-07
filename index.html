@@ -504,6 +504,151 @@
       border-radius: 6px;
     }
 
+    /* ── CALCULATOR ── */
+    .calc-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+    .calc-btn {
+      background: var(--white);
+      border: 1px solid var(--sand-dark);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .calc-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .calc-btn.primary { background: var(--blue); color: white; border-color: var(--blue); }
+    .calc-btn.primary:hover { background: var(--blue-mid); }
+
+    .calc-week {
+      background: var(--white);
+      border: 1px solid var(--sand-dark);
+      border-radius: 10px;
+      padding: 1.1rem 1.25rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .calc-week-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--sand-dark);
+    }
+    .calc-week-head h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--blue);
+    }
+    .calc-week-totals {
+      font-size: 0.82rem;
+      color: var(--ink-mid);
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: baseline;
+    }
+    .calc-week-totals b { font-size: 1.05rem; font-family: var(--serif); }
+    .used-ok    { color: var(--yulia); }
+    .used-warn  { color: var(--warn); }
+    .used-over  { color: #B03A2E; }
+
+    .calc-bar {
+      height: 7px;
+      border-radius: 4px;
+      background: var(--sand-dark);
+      overflow: hidden;
+      margin: 2px 0 12px;
+      position: relative;
+    }
+    .calc-bar-base { position: absolute; left: 0; top: 0; bottom: 0; background: var(--angi); }
+    .calc-bar-extra { position: absolute; top: 0; bottom: 0; background: var(--goout); }
+    .calc-bar-tick { position: absolute; top: -2px; bottom: -2px; width: 2px; background: var(--ink); opacity: 0.45; }
+
+    .calc-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+    .calc-day {
+      border: 1px solid var(--sand-dark);
+      border-radius: 6px;
+      padding: 6px 6px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-height: 96px;
+      background: var(--sand);
+    }
+    .calc-day.has-shift { background: var(--white); }
+    .calc-day.editable { background: var(--angi-bg); border-color: var(--angi); }
+    .calc-day.off-day { background: var(--rest); }
+    .calc-day-top { font-size: 0.66rem; color: var(--ink-light); line-height: 1.2; }
+    .calc-day-top b { font-size: 0.82rem; color: var(--ink); font-family: var(--serif); }
+    .calc-day-hrs { font-size: 0.8rem; font-weight: 600; color: var(--angi); }
+    .calc-day-rem { font-size: 0.62rem; color: var(--ink-light); margin-top: auto; }
+    .calc-day select {
+      width: 100%;
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      padding: 2px;
+      border: 1px solid var(--angi);
+      border-radius: 4px;
+      background: var(--white);
+      color: var(--angi);
+      cursor: pointer;
+      margin-top: 2px;
+    }
+    .calc-day-note { font-size: 0.6rem; color: var(--ink-light); font-style: italic; }
+
+    .checker-box {
+      background: var(--note-bg);
+      border: 1px solid var(--blue-light);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .checker-box h3 { font-family: var(--serif); font-size: 1.1rem; color: var(--blue); margin-bottom: 0.5rem; }
+    .checker-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 0.75rem 0; }
+    .checker-row input[type="datetime-local"] {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      padding: 6px 9px;
+      border: 1px solid var(--sand-dark);
+      border-radius: 6px;
+      background: var(--white);
+    }
+    .checker-result {
+      font-size: 0.95rem;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+    .checker-result.pass { background: #D5F5E3; color: var(--yulia); }
+    .checker-result.fail { background: #FADBD8; color: #B03A2E; }
+    .checker-presets { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .scan-line { font-size: 0.82rem; padding: 5px 0; border-bottom: 1px solid var(--sand); }
+    .scan-line:last-child { border-bottom: none; }
+
+    @media (max-width: 600px) {
+      .calc-days { grid-template-columns: repeat(7, 1fr); gap: 3px; }
+      .calc-day { min-height: 84px; padding: 4px 3px 6px; }
+      .calc-day-top b { font-size: 0.72rem; }
+      .calc-day select { font-size: 0.55rem; }
+    }
+
     /* ── ANIMATIONS ── */
     .section.active .page-wrap {
       animation: fadeUp 0.3s ease both;
@@ -527,6 +672,7 @@
     <button class="nav-tab active" onclick="showSection('overview')">Overview</button>
     <button class="nav-tab" onclick="showSection('calendar')">Calendar</button>
     <button class="nav-tab" onclick="showSection('angi')">Angi</button>
+    <button class="nav-tab" onclick="showSection('calculator')">Hours Calc</button>
     <button class="nav-tab" onclick="showSection('olga')">Olga</button>
     <button class="nav-tab" onclick="showSection('yulia')">Yulia</button>
     <button class="nav-tab" onclick="showSection('parents')">Parents</button>
@@ -902,6 +1048,54 @@
 </section>
 
 <!-- ══════════════════════════════════════
+     HOURS CALCULATOR
+══════════════════════════════════════ -->
+<section id="calculator" class="section">
+  <div class="page-wrap">
+    <p class="section-title">Angi · Hours Calculator</p>
+    <p class="section-intro">Plan how to spend the headroom between Angi's <strong>28 hr/week</strong> baseline and her <strong>45 hr/week</strong> max. The weeknight bedtimes (Tue/Wed/Thu, shown in blue) are adjustable — switch any of them to a half night or a full overnight when parents go out, and every total recalculates live.</p>
+
+    <div class="stats-row">
+      <div class="stat-pill"><div class="stat-val">28</div><div class="stat-label">Base hrs/week</div></div>
+      <div class="stat-pill"><div class="stat-val">45</div><div class="stat-label">Weekly cap</div></div>
+      <div class="stat-pill"><div class="stat-val">17</div><div class="stat-label">Headroom/week</div></div>
+      <div class="stat-pill"><div class="stat-val">10</div><div class="stat-label">Max single shift</div></div>
+    </div>
+
+    <div class="rules-box" style="padding:1rem 1.25rem;">
+      <div class="rule-item" style="border:none;padding:4px 0;"><span class="rule-icon">🔵</span><span>A weeknight in blue = adjustable. <strong>Bedtime</strong> 9–11pm (2h) · <strong>Half night</strong> 9pm–3am (6h, +4) · <strong>Full overnight</strong> 9pm–7am (10h, +8).</span></div>
+      <div class="rule-item" style="border:none;padding:4px 0;"><span class="rule-icon">📊</span><span>The bar shows each week vs. the 45 hr cap. Solid = used hours; the tick mark = the 28 hr baseline.</span></div>
+    </div>
+
+    <div class="calc-controls">
+      <button class="calc-btn" onclick="calcReset()">↺ Reset to baseline (28/wk)</button>
+      <button class="calc-btn" onclick="calcMaxOut()">Fill to ~max (2 full overnights/wk)</button>
+    </div>
+
+    <div id="calc-weeks"></div>
+
+    <!-- Rolling 24-hour checker -->
+    <div class="checker-box">
+      <h3>🔄 Rolling 24-hour checker</h3>
+      <p style="font-size:0.85rem;color:var(--ink-mid);">The 10-hour limit isn't a midnight reset — at <em>any</em> moment Angi shouldn't have worked more than 10 hours in the previous 24. Pick a moment to see how many hours fall in the 24 hours leading up to it (reflects the toggles above).</p>
+      <div class="checker-row">
+        <label style="font-size:0.85rem;color:var(--ink-mid);">As of:</label>
+        <input type="datetime-local" id="checker-time" min="2026-07-05T00:00" max="2026-08-01T12:00" value="2026-07-11T07:00">
+        <button class="calc-btn primary" onclick="runChecker()">Check</button>
+      </div>
+      <div class="checker-presets" id="checker-presets"></div>
+      <div id="checker-result" class="checker-result pass"></div>
+    </div>
+
+    <div class="rules-box">
+      <h3>Whole-month scan</h3>
+      <p style="font-size:0.85rem;color:var(--ink-mid);margin-bottom:0.5rem;">Automatically checks every moment in July against both limits, using your current toggles.</p>
+      <div id="scan-output"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
      OLGA
 ══════════════════════════════════════ -->
 <section id="olga" class="section">
@@ -1167,6 +1361,290 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeDay();
   });
+
+  /* ══════════════════════════════════════
+     ANGI HOURS CALCULATOR
+  ══════════════════════════════════════ */
+  (function () {
+    const CAP_WEEK = 45, BASE_WEEK = 28, CAP_DAY = 10;
+    const pad = n => String(n).padStart(2, '0');
+
+    // Weeknight options (Tue/Wed/Thu) — what Angi's evening shift becomes.
+    const OPT = {
+      bedtime: { label: 'Bedtime (2h)',     endH: 23, cross: false },
+      half:    { label: 'Half night (6h)',  endH: 3,  cross: true  },
+      full:    { label: 'Full o/night (10h)', endH: 7, cross: true  },
+    };
+
+    // The crafted plan, Jul 5–31 2026. kind drives the fixed shift; weeknights are editable.
+    const DAYS = [
+      { date: '2026-07-05', dow: 'Sun', kind: 'off',       note: 'Arrival' },
+      { date: '2026-07-06', dow: 'Mon', kind: 'mon' },
+      { date: '2026-07-07', dow: 'Tue', kind: 'weeknight' },
+      { date: '2026-07-08', dow: 'Wed', kind: 'weeknight' },
+      { date: '2026-07-09', dow: 'Thu', kind: 'weeknight' },
+      { date: '2026-07-10', dow: 'Fri', kind: 'fri' },
+      { date: '2026-07-11', dow: 'Sat', kind: 'sat' },
+      { date: '2026-07-12', dow: 'Sun', kind: 'off',       note: 'Boat day' },
+      { date: '2026-07-13', dow: 'Mon', kind: 'mon' },
+      { date: '2026-07-14', dow: 'Tue', kind: 'weeknight' },
+      { date: '2026-07-15', dow: 'Wed', kind: 'weeknight' },
+      { date: '2026-07-16', dow: 'Thu', kind: 'weeknight' },
+      { date: '2026-07-17', dow: 'Fri', kind: 'fri' },
+      { date: '2026-07-18', dow: 'Sat', kind: 'sat' },
+      { date: '2026-07-19', dow: 'Sun', kind: 'off' },
+      { date: '2026-07-20', dow: 'Mon', kind: 'mon' },
+      { date: '2026-07-21', dow: 'Tue', kind: 'weeknight' },
+      { date: '2026-07-22', dow: 'Wed', kind: 'weeknight' },
+      { date: '2026-07-23', dow: 'Thu', kind: 'weeknight' },
+      { date: '2026-07-24', dow: 'Fri', kind: 'fri' },
+      { date: '2026-07-25', dow: 'Sat', kind: 'sat' },
+      { date: '2026-07-26', dow: 'Sun', kind: 'off' },
+      { date: '2026-07-27', dow: 'Mon', kind: 'mon' },
+      { date: '2026-07-28', dow: 'Tue', kind: 'weeknight' },
+      { date: '2026-07-29', dow: 'Wed', kind: 'weeknight' },
+      { date: '2026-07-30', dow: 'Thu', kind: 'morning',   note: 'Last care day' },
+      { date: '2026-07-31', dow: 'Fri', kind: 'off',       note: 'Travel' },
+    ];
+
+    const WEEKS = [
+      { label: 'Week 1', range: 'Jul 5–11',  start: '2026-07-05', end: '2026-07-11' },
+      { label: 'Week 2', range: 'Jul 12–18', start: '2026-07-12', end: '2026-07-18' },
+      { label: 'Week 3', range: 'Jul 19–25', start: '2026-07-19', end: '2026-07-25' },
+      { label: 'Week 4', range: 'Jul 26–31', start: '2026-07-26', end: '2026-07-31' },
+    ];
+
+    // Editable weeknight state, keyed by date. Default = baseline plan (all bedtime).
+    const state = {};
+    DAYS.forEach(d => { if (d.kind === 'weeknight') state[d.date] = 'bedtime'; });
+
+    function dt(dateStr, h, m, cross) {
+      const x = new Date(dateStr + 'T' + pad(h) + ':' + pad(m || 0) + ':00');
+      if (cross) x.setDate(x.getDate() + 1);
+      return x;
+    }
+
+    // Returns the shift(s) for a given day given current toggle state.
+    function shiftsFor(d) {
+      switch (d.kind) {
+        case 'mon':     return [{ s: dt(d.date, 21), e: dt(d.date, 23), lbl: 'Bedtime 9–11pm' }];
+        case 'fri':
+        case 'sat':     return [{ s: dt(d.date, 21), e: dt(d.date, 7, 0, true), lbl: 'Overnight 9pm–7am' }];
+        case 'morning': return [{ s: dt(d.date, 7), e: dt(d.date, 13), lbl: 'Morning 7am–1pm' }];
+        case 'weeknight': {
+          const o = OPT[state[d.date]];
+          return [{ s: dt(d.date, 21), e: dt(d.date, o.endH, 0, o.cross), lbl: o.label }];
+        }
+        default: return [];
+      }
+    }
+
+    const hrs = sh => (sh.e - sh.s) / 3600000;
+
+    function allShifts() {
+      const out = [];
+      DAYS.forEach(d => shiftsFor(d).forEach(sh => out.push(Object.assign({ date: d.date, dow: d.dow }, sh))));
+      return out;
+    }
+
+    function dayHours(d) { return shiftsFor(d).reduce((t, sh) => t + hrs(sh), 0); }
+
+    function weekHours(w) {
+      return DAYS.filter(d => d.date >= w.start && d.date <= w.end)
+                 .reduce((t, d) => t + dayHours(d), 0);
+    }
+
+    // Overlap (hours) of a shift with the window [a, b].
+    function overlap(sh, a, b) {
+      const s = Math.max(sh.s.getTime(), a.getTime());
+      const e = Math.min(sh.e.getTime(), b.getTime());
+      return Math.max(0, (e - s) / 3600000);
+    }
+    function rollingAt(t) {
+      const a = new Date(t.getTime() - 24 * 3600000);
+      return allShifts().reduce((sum, sh) => sum + overlap(sh, a, t), 0);
+    }
+
+    const fmt = n => (Math.round(n * 10) / 10).toString().replace(/\.0$/, '');
+
+    function usedClass(used) {
+      if (used > CAP_WEEK + 0.001) return 'used-over';
+      if (used > BASE_WEEK + 0.001) return 'used-warn';
+      return 'used-ok';
+    }
+
+    /* ── RENDER WEEKS ── */
+    function renderWeeks() {
+      const host = document.getElementById('calc-weeks');
+      if (!host) return;
+      host.innerHTML = WEEKS.map(w => {
+        const days = DAYS.filter(d => d.date >= w.start && d.date <= w.end);
+        const used = weekHours(w);
+        const remaining = CAP_WEEK - used;
+        const cls = usedClass(used);
+        const pct = Math.min(100, used / CAP_WEEK * 100);
+        const basePct = BASE_WEEK / CAP_WEEK * 100;
+        const overFlag = used > CAP_WEEK + 0.001
+          ? ' ⚠️ over 45h cap'
+          : (used > BASE_WEEK + 0.001 ? ' · above baseline' : '');
+
+        const dayCells = days.map(d => {
+          const dh = dayHours(d);
+          const dayNum = parseInt(d.date.slice(-2), 10);
+          let cellCls = 'calc-day';
+          if (d.kind === 'weeknight') cellCls += ' editable';
+          else if (d.kind === 'off') cellCls += ' off-day';
+          else if (dh > 0) cellCls += ' has-shift';
+
+          let body = '<div class="calc-day-top">' + d.dow + ' <b>' + dayNum + '</b></div>';
+          if (d.kind === 'weeknight') {
+            body += '<div class="calc-day-hrs">' + fmt(dh) + 'h</div>';
+            body += '<select onchange="calcSet(\'' + d.date + '\', this.value)">' +
+              Object.keys(OPT).map(k =>
+                '<option value="' + k + '"' + (state[d.date] === k ? ' selected' : '') + '>' + OPT[k].label + '</option>'
+              ).join('') + '</select>';
+            body += '<div class="calc-day-rem">' + fmt(CAP_DAY - dh) + 'h to 10h max</div>';
+          } else if (d.kind === 'off') {
+            body += '<div class="calc-day-note">Off' + (d.note ? ' · ' + d.note : '') + '</div>';
+            body += '<div class="calc-day-rem">rest</div>';
+          } else {
+            body += '<div class="calc-day-hrs">' + fmt(dh) + 'h</div>';
+            if (d.note) body += '<div class="calc-day-note">' + d.note + '</div>';
+            body += '<div class="calc-day-rem">' + fmt(CAP_DAY - dh) + 'h to 10h max</div>';
+          }
+          return '<div class="' + cellCls + '">' + body + '</div>';
+        }).join('');
+
+        return '<div class="calc-week">' +
+          '<div class="calc-week-head">' +
+            '<h3>' + w.label + ' <span style="font-size:0.8rem;color:var(--ink-light);font-family:var(--sans);">' + w.range + '</span></h3>' +
+            '<div class="calc-week-totals">' +
+              '<span>Used <b class="' + cls + '">' + fmt(used) + 'h</b> / 45</span>' +
+              '<span>Remaining <b class="' + (remaining < 0 ? 'used-over' : 'used-ok') + '">' + fmt(remaining) + 'h</b></span>' +
+              '<span style="color:var(--ink-light)">' + overFlag + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="calc-bar">' +
+            '<div class="calc-bar-base" style="width:' + Math.min(pct, basePct) + '%"></div>' +
+            (pct > basePct ? '<div class="calc-bar-extra" style="left:' + basePct + '%;width:' + (pct - basePct) + '%"></div>' : '') +
+            '<div class="calc-bar-tick" style="left:' + basePct + '%"></div>' +
+          '</div>' +
+          '<div class="calc-days">' + dayCells + '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    /* ── ROLLING CHECKER ── */
+    function labelFor(t) {
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      let h = t.getHours();
+      const ampm = h >= 12 ? 'pm' : 'am';
+      h = h % 12; if (h === 0) h = 12;
+      const m = t.getMinutes();
+      return days[t.getDay()] + ' Jul ' + t.getDate() + ', ' + h + (m ? ':' + pad(m) : '') + ampm;
+    }
+
+    window.runChecker = function () {
+      const input = document.getElementById('checker-time');
+      const out = document.getElementById('checker-result');
+      if (!input.value) return;
+      const t = new Date(input.value);
+      const total = rollingAt(t);
+      const ok = total <= CAP_DAY + 0.001;
+      out.className = 'checker-result ' + (ok ? 'pass' : 'fail');
+      out.innerHTML = (ok ? '✓ ' : '⚠️ ') +
+        '<strong>' + fmt(total) + ' hours</strong> worked in the 24h ending ' + labelFor(t) +
+        ' (window: ' + labelFor(new Date(t.getTime() - 24 * 3600000)) + ' → ' + labelFor(t) + '). ' +
+        (ok ? 'Within the 10-hour limit.' : 'Exceeds the 10-hour rolling limit by ' + fmt(total - CAP_DAY) + 'h.');
+    };
+
+    const PRESETS = [
+      { lbl: 'Fri o/night ends (Sat 7am)', v: '2026-07-11T07:00' },
+      { lbl: 'Sat o/night ends (Sun 7am)', v: '2026-07-12T07:00' },
+      { lbl: 'Mid Sat overnight (3am)',    v: '2026-07-12T03:00' },
+      { lbl: 'Thu weeknight 11pm',         v: '2026-07-09T23:00' },
+    ];
+    function renderPresets() {
+      const host = document.getElementById('checker-presets');
+      if (!host) return;
+      host.innerHTML = PRESETS.map(p =>
+        '<button class="calc-btn" onclick="calcPreset(\'' + p.v + '\')">' + p.lbl + '</button>'
+      ).join('');
+    }
+    window.calcPreset = function (v) {
+      document.getElementById('checker-time').value = v;
+      window.runChecker();
+    };
+
+    /* ── WHOLE-MONTH SCAN ── */
+    function renderScan() {
+      const host = document.getElementById('scan-output');
+      if (!host) return;
+      const shifts = allShifts();
+      // The rolling-24 sum is piecewise-linear; its local maxima land at shift ends
+      // or 24h after a shift start. Check both sets of candidate moments.
+      const cands = [];
+      shifts.forEach(sh => {
+        cands.push(sh.e);
+        cands.push(new Date(sh.s.getTime() + 24 * 3600000));
+      });
+      let worstVal = 0, worstT = null;
+      const viol = [];
+      const seen = {};
+      cands.forEach(t => {
+        const v = rollingAt(t);
+        if (v > worstVal) { worstVal = v; worstT = t; }
+        if (v > CAP_DAY + 0.001) {
+          const key = t.getTime();
+          if (!seen[key]) { seen[key] = true; viol.push({ t: t, v: v }); }
+        }
+      });
+      // Weekly cap violations
+      const weekViol = WEEKS.filter(w => weekHours(w) > CAP_WEEK + 0.001);
+
+      let html = '';
+      const rollOk = viol.length === 0;
+      html += '<div class="scan-line">' + (rollOk ? '✓' : '⚠️') +
+        ' <strong>Rolling 24h:</strong> peak is <strong>' + fmt(worstVal) + 'h</strong>' +
+        (worstT ? ' (ending ' + labelFor(worstT) + ')' : '') +
+        ' — ' + (rollOk ? 'never exceeds the 10h limit.' : viol.length + ' window(s) over 10h.') + '</div>';
+      viol.forEach(x => {
+        html += '<div class="scan-line" style="color:#B03A2E;padding-left:1rem;">⚠️ ' + fmt(x.v) + 'h ending ' + labelFor(x.t) + '</div>';
+      });
+      const wkOk = weekViol.length === 0;
+      html += '<div class="scan-line">' + (wkOk ? '✓' : '⚠️') +
+        ' <strong>Weekly 45h cap:</strong> ' +
+        (wkOk ? 'every week is at or under 45h.' : weekViol.map(w => w.label + ' = ' + fmt(weekHours(w)) + 'h').join(', ') + ' over cap.') + '</div>';
+      const totalMonth = DAYS.reduce((t, d) => t + dayHours(d), 0);
+      html += '<div class="scan-line"><strong>Month total:</strong> ' + fmt(totalMonth) + ' hours across all of July.</div>';
+      host.innerHTML = html;
+    }
+
+    /* ── PUBLIC HANDLERS ── */
+    function refresh() { renderWeeks(); renderScan(); window.runChecker(); }
+
+    window.calcSet = function (date, val) { state[date] = val; refresh(); };
+    window.calcReset = function () {
+      DAYS.forEach(d => { if (d.kind === 'weeknight') state[d.date] = 'bedtime'; });
+      refresh();
+    };
+    window.calcMaxOut = function () {
+      // Two full overnights per week (Tue + Wed), leaving Thu as bedtime → 44h/wk, under cap.
+      // Skip any weeknight directly followed by a morning shift (Wed Jul 29 → Thu Jul 30),
+      // since a full overnight there would run continuously into the morning and break the
+      // 10-hour rolling limit.
+      DAYS.forEach((d, i) => {
+        if (d.kind !== 'weeknight') return;
+        const nextIsMorning = DAYS[i + 1] && DAYS[i + 1].kind === 'morning';
+        state[d.date] = (!nextIsMorning && (d.dow === 'Tue' || d.dow === 'Wed')) ? 'full' : 'bedtime';
+      });
+      refresh();
+    };
+
+    // Init
+    renderPresets();
+    refresh();
+  })();
 </script>
 
 </body>
