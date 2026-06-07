@@ -1390,21 +1390,24 @@
      CALENDAR LEGEND FILTER
   ══════════════════════════════════════ */
   (function () {
-    // For each filter, the slot/tag selectors that stay visible.
+    // Each filter: `keep` = slot/tag selectors that stay visible; `chips` =
+    // which legend chips highlight. The "Angi potential overnight" chip is
+    // linked to Angi, so either one shows Angi + her potential overnights.
     const FILTERS = {
-      angi:      ['.slot.angi', '.tag.maybe', '.tag.rest'],
-      yulia:     ['.slot.yulia'],
-      parents:   ['.slot.parents', '.tag.goout', '.tag.maybe'],
-      olga:      ['.slot.olga', '.tag.olga'],
-      overnight: ['.tag.maybe'],
-      goout:     ['.tag.goout'],
-      off:       ['.tag.rest'],
+      angi:    { keep: ['.slot.angi', '.tag.maybe', '.tag.rest'], chips: ['angi', 'overnight'] },
+      yulia:   { keep: ['.slot.yulia'],                           chips: ['yulia'] },
+      parents: { keep: ['.slot.parents', '.tag.goout', '.tag.maybe'], chips: ['parents'] },
+      olga:    { keep: ['.slot.olga', '.tag.olga'],               chips: ['olga'] },
+      goout:   { keep: ['.tag.goout'],                            chips: ['goout'] },
+      off:     { keep: ['.tag.rest'],                             chips: ['off'] },
     };
+    // Chips that map onto another filter rather than defining their own.
+    const ALIAS = { overnight: 'angi' };
     let current = null;
     const cal = () => document.getElementById('calendar');
 
     function apply(key) {
-      const keep = FILTERS[key];
+      const keep = FILTERS[key].keep;
       const root = cal();
       root.querySelectorAll('.slot, .tag').forEach(function (el) {
         el.style.display = keep.some(function (sel) { return el.matches(sel); }) ? '' : 'none';
@@ -1421,14 +1424,16 @@
     }
 
     window.filterCal = function (key) {
-      if (!FILTERS[key]) return;
-      if (current === key) { window.clearCalFilter(); return; }  // toggle off
-      current = key;
-      apply(key);
+      const canon = ALIAS[key] || key;            // resolve linked chips
+      if (!FILTERS[canon]) return;
+      if (current === canon) { window.clearCalFilter(); return; }  // toggle off
+      current = canon;
+      apply(canon);
+      const chips = FILTERS[canon].chips;
       const legend = document.getElementById('cal-legend');
       legend.classList.add('filtering');
       legend.querySelectorAll('.leg').forEach(function (l) {
-        l.classList.toggle('leg-active', l.getAttribute('data-filter') === key);
+        l.classList.toggle('leg-active', chips.indexOf(l.getAttribute('data-filter')) !== -1);
       });
     };
 
