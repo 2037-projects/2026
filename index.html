@@ -1396,13 +1396,12 @@
     const FILTERS = {
       angi:    { keep: ['.slot.angi', '.tag.maybe', '.tag.rest'], chips: ['angi', 'overnight'] },
       yulia:   { keep: ['.slot.yulia'],                           chips: ['yulia'] },
-      parents: { keep: ['.slot.parents', '.tag.goout', '.tag.maybe'], chips: ['parents'] },
+      parents: { keep: ['.slot.parents', '.tag.goout', '.tag.maybe'], chips: ['parents', 'goout'] },
       olga:    { keep: ['.slot.olga', '.tag.olga'],               chips: ['olga'] },
-      goout:   { keep: ['.tag.goout'],                            chips: ['goout'] },
       off:     { keep: ['.tag.rest'],                             chips: ['off'] },
     };
     // Chips that map onto another filter rather than defining their own.
-    const ALIAS = { overnight: 'angi' };
+    const ALIAS = { overnight: 'angi', goout: 'parents' };
     let current = null;
     const cal = () => document.getElementById('calendar');
 
